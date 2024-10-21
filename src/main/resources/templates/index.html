@@ -1,32 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Title</title>
+    <title>EMS - Employee Management System</title>
+
+    <style>
+        /* Navbar styles */
+        .navbar {
+            background-color: #007bff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: #ffdd57;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            font-size: 1.1rem;
+            padding-right: 10px;
+        }
+
+        .navbar-nav .nav-item.active .nav-link:hover {
+            color: #ffdd57;
+        }
+
+        .navbar-nav .nav-item.active .nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Table styles */
+        table {
+            margin-top: 2rem;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f1f1f1;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        /* Button styles */
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Container padding */
+        .container {
+            margin-top: 2rem;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile responsive design */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .navbar-nav .nav-item {
+                margin-bottom: 10px;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<main>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+<header>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand m-3" href="#">EMS - Employee Management System</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item active ms-5">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item ms-4">
-                    <a class="nav-link" href="#">Add Emp</a>
+                <li class="nav-item active ms-5">
+                    <a class="nav-link" href="addEmp">Add EMP</a>
                 </li>
             </ul>
         </div>
     </nav>
+</header>
 
+<main>
+    <div class="container p-5">
+        <!-- Employee Table -->
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">ADDRESS</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">PHONE NO.</th>
+                <th scope="col">SALARY</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>@mdo</td>
+                <td>$5000</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>@fat</td>
+                <td>$4500</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>@twitter</td>
+                <td>@twitter</td>
+                <td>@twitter</td>
+                <td>$6000</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 </html>
