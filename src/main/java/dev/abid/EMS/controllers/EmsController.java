@@ -20,10 +20,10 @@ public class EmsController {
         return "addEmp";
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public String empRegister(@ModelAttribute Employee emp){
         System.out.println(emp);
-        return "";
+        return "addEmp";
     }
 
 }
