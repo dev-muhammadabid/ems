@@ -1,7 +1,15 @@
 package dev.abid.EMS.entities;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name = "EMP_SYSTEM")
 public class Employee {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;  // Primary key, should be numeric like Long or Integer
     private String name;
     private String address;
     private String email;
@@ -10,6 +18,16 @@ public class Employee {
 
     public Employee(){
         super();
+    }
+
+    // Getters and setters
+
+    public Long getId() {  // Getter for ID
+        return id;
+    }
+
+    public void setId(Long id) {  // Setter for ID
+        this.id = id;
     }
 
     public String getName() {
