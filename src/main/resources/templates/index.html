@@ -43,16 +43,19 @@
         table {
             margin-top: 2rem;
             border-collapse: collapse;
+            width: 100%;
+            background-color: #ffffff;
+            font-size: 0.9rem;
         }
 
         thead {
-            background-color: #007bff;
+            background-color: #28a745; /* Green header */
             color: white;
             font-weight: bold;
         }
 
         tbody tr:hover {
-            background-color: rgba(0, 123, 255, 0.1);
+            background-color: rgba(40, 167, 69, 0.2); /* Light green on hover */
         }
 
         tbody tr:nth-child(odd) {
@@ -60,12 +63,13 @@
         }
 
         tbody tr:nth-child(even) {
-            background-color: #f1f1f1;
+            background-color: #e9ecef; /* Light gray for even rows */
         }
 
         th, td {
-            padding: 0.75rem;
+            padding: 1rem; /* Increased padding for better spacing */
             text-align: center;
+            border: 1px solid #dee2e6; /* Border for cells */
         }
 
         /* Button styles */
@@ -77,6 +81,16 @@
 
         .btn-primary:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
             transform: scale(1.05);
         }
 
@@ -100,7 +114,7 @@
             }
 
             table {
-                font-size: 0.9rem;
+                font-size: 0.6rem;
             }
         }
     </style>
@@ -126,6 +140,11 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Alert message -->
+    <div th:if="${msg}">
+        <div class="alert alert-info" role="alert" th:text="${msg}"></div>
+    </div>
 </header>
 
 <main>
@@ -140,32 +159,21 @@
                 <th scope="col">EMAIL</th>
                 <th scope="col">PHONE NO.</th>
                 <th scope="col">SALARY</th>
+                <th scope="col">ACTION</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>$5000</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                <td>$4500</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>$6000</td>
+            <tr th:each="e : ${emp}">
+                <th scope="row" th:text="${e.id}"></th>
+                <td th:text="${e.name}"></td>
+                <td th:text="${e.address}"></td>
+                <td th:text="${e.email}"></td>
+                <td th:text="${e.phno}"></td>
+                <td th:text="${e.salary}"></td>
+                <td>
+                    <a class="btn btn-sm btn-primary" th:href="@{/editEmp/{id}(id=${e.id})}">Edit</a>
+                    <a class="btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${e.id})}" onclick="return confirm('Are you sure you want to delete this employee?');">Delete</a>
+                </td>
             </tr>
             </tbody>
         </table>

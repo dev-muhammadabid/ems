@@ -9,7 +9,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // Primary key, should be numeric like Long or Integer
+    private int id;
     private String name;
     private String address;
     private String email;
@@ -22,11 +22,11 @@ public class Employee {
 
     // Getters and setters
 
-    public Long getId() {  // Getter for ID
+    public int getId() {  // Getter for ID
         return id;
     }
 
-    public void setId(Long id) {  // Setter for ID
+    public void setId(int id) {  // Setter for ID
         this.id = id;
     }
 
