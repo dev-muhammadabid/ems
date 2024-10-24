@@ -61,7 +61,7 @@ public class EmsController {
     @GetMapping("/delete/{id}")
     public String deleteEmp(@PathVariable int id, HttpSession session){
         empService.deleteEmp(id);
-        session.setAttribute("msg", "Employee Data Deleted Successfully");
+        session.setAttribute("msg", "Employee Data Delete Successfully");
         return "redirect:/";
     }
 
